@@ -40,13 +40,14 @@ let d;
 
 // 'keyCode' for direction, these codes are unique in JavaScript Events
 function direction(e) {
-    if (e.keyCode == 37) {
+    let key = e.keyCode;
+    if (key == 37) {
         d = 'LEFT'
-    } else if (e.keyCode == 38) {
+    } else if (key == 38) {
         d = 'UP'
-    } else if (e.keyCode == 39) {
+    } else if (key == 39) {
         d = 'RIGHT'
-    } else if (e.keyCode == 40) {
+    } else if (key == 40) {
         d = 'DOWN'
     }
 }
