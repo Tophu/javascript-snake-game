@@ -16,7 +16,22 @@ ground.src = "img/ground2.png";
 const foodImg = new Image();
 foodImg.src = "img/egg2.png";
 
-// Array of Snake's body, including the head and tail
+// Loading the audio assets for the game
+const gameOver = new Audio();
+const ration = new Audio();
+const left = new Audio();
+const up = new Audio();
+const right = new Audio();
+const down = new Audio();
+
+gameOver.src = "audio/Gameover.mp3";
+ration.src = "audio/Ration.mp3";
+left.src = "audio/left.mp3";
+up.src = "audio/up.mp3";
+right.src = "audio/right.mp3";
+down.src = "audio/down.mp3";
+
+// Create the snake declaring an Array of the Snake's body, including the head and tail
 let snake = [];
 snake[0] = {
     x: 9 * box,
