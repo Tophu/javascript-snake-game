@@ -29,6 +29,13 @@ let score = 0;
 
 function draw() {
     ctx.drawImage(ground, 0, 0);
+    for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = (i == 0) ? "teal" : "white";
+        ctx.fillRect(snake[i].x, snake[i].y, box, box);
+        ctx.strokeStyle = "darkturquiose";
+        ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+
+    }
 }
 
 let game = setInterval(draw, 100);
