@@ -65,13 +65,27 @@ function draw() {
     // Font and Score & Food Image Position
     ctx.drawImage(foodImg, food.x, food.y);
 
-    // SNAKE MOVEMENTS
-    // Old head position of snake
+    // Old position of the Snake's head Array
     let snakeX = snake[0].x;
-    let snakeX = snake[0].y;
+    let snakeY = snake[0].y;
 
-    // Remove the tail after moving
+    // Direction of movement, increment or decrement depending on direction the snake is going in
+    if (d == 'LEFT') snakeX -= box;
+    if (d == 'UP') snakeY -= box;
+    if (d == 'RIGHT') snakeX += box;
+    if (d == 'DOWN') snakeY += box;
+
+    // Remove the Snake's tail after moving from the Snake Array
     snake.pop();
+
+    // Add new head of Snake after mocing
+    let newHead = {
+        x: snakeX,
+        y: snakeY
+    }
+
+    // Add the head to the beginning of the Snake Array
+    snake.unshift(newHead);
 
     ctx.fillStyle = "white";
     ctx.font = "36px Arial";
