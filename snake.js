@@ -85,14 +85,13 @@ function draw() {
             y: Math.floor(Math.random() * 15 + 3) * box
         }
     } else {
-        // Remove the tail from Snake
+        // Remove the Snake's tail after moving from the Snake Array
         snake.pop();
     }
 
-    // Remove the Snake's tail after moving from the Snake Array
-    snake.pop();
 
-    // Add new head of Snake after mocing
+
+    // Add new head of Snake after moving
     let newHead = {
         x: snakeX,
         y: snakeY
