@@ -76,7 +76,17 @@ function draw() {
     if (d == 'RIGHT') snakeX += box;
     if (d == 'DOWN') snakeY += box;
 
-    // If the Snake eats the food (Snake head == food position), Increment the score
+    // Check collision function
+    function collision(head, array) {
+        for (let i = 0; i < array.length; i++) {
+            if (head.x == array[i].x && head.y == array[i].y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // If the Snake eats the food (Snake head == food position), Increment the score and the body of snake
     if (snakeX == food.x && snakeY == food.y) {
         score++;
         // Generate new food after Snake eats the food
@@ -85,16 +95,19 @@ function draw() {
             y: Math.floor(Math.random() * 15 + 3) * box
         }
     } else {
-        // Remove the Snake's tail after moving from the Snake Array
+        // Remove the Snake's tail
         snake.pop();
     }
-
-
 
     // Add new head of Snake after moving
     let newHead = {
         x: snakeX,
         y: snakeY
+    }
+
+    // Game Over rules
+    if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box || collision(newHead, snake)) {
+        clearInterval(game);
     }
 
     // Add the head to the beginning of the Snake Array
