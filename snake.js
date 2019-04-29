@@ -31,6 +31,10 @@ up.src = "audio/up.mp3";
 right.src = "audio/right.mp3";
 down.src = "audio/down.mp3";
 
+/* Add audio to direction function, control flows: Snake eats food & gameover
+Example: gameOver.play();, ration.play();
+*/
+
 // Create the snake declaring an Array of the Snake's body, including the head and tail
 let snake = [];
 snake[0] = {
@@ -57,12 +61,16 @@ let d;
 function direction(e) {
     let key = e.keyCode;
     if (key == 37 && d != 'RIGHT') {
+        left.play();
         d = 'LEFT'
     } else if (key == 38 && d != 'DOWN') {
+        up.play();
         d = 'UP'
     } else if (key == 39 && d != 'LEFT') {
+        right.play();
         d = 'RIGHT'
     } else if (key == 40 && d != 'UP') {
+        down.play();
         d = 'DOWN'
     }
 }
@@ -103,6 +111,7 @@ function draw() {
 
     // If the Snake eats the food (Snake head == food position), Increment the score and the body of snake
     if (snakeX == food.x && snakeY == food.y) {
+        ration.play();
         score++;
         // Generate new food after Snake eats the food
         food = {
@@ -122,6 +131,7 @@ function draw() {
 
     // Game Over rules
     if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box || collision(newHead, snake)) {
+        gameOver.play();
         clearInterval(game);
     }
 
